@@ -1,27 +1,19 @@
 package LinkedList.SinglyLL.Reverse;
-
-import java.util.Stack;
-
 import LinkedList.SinglyLL.Node;
 import LinkedList.SinglyLL.Traverse;
 
 public class Reverse {
     static Node reverse(Node head){
         Node curr = head;
-        Stack<Node>st = new Stack<>();
+        Node prev = null;
+
         while(curr != null){
-            st.push(curr);
-            curr = curr.next;
+            Node temp = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = temp;
         }
-        
-        head = st.pop();
-        curr = head;
-        while(!st.isEmpty()){   
-            curr.next = st.pop();
-            curr = curr.next;
-        }
-        curr.next = null;
-        return head;
+        return prev;
     }
     public static void main(String[] args) {
         Node head = new Node(2);
