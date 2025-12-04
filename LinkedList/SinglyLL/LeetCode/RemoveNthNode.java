@@ -1,7 +1,5 @@
 package LinkedList.SinglyLL.LeetCode;
 
-import LinkedList.SinglyLL.Traverse;
-
 class ListNode {
     int val;
     ListNode next;
