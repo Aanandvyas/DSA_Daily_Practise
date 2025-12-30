@@ -8,6 +8,7 @@ public class BaseballGame {
         String[] nums = {"5","-2","4","C","D","9","+","+"};
         Deque<Integer>dq = new ArrayDeque<>();
 
+
         for(String s:nums){
             if(s.equals("C")){
                 dq.removeLast();
