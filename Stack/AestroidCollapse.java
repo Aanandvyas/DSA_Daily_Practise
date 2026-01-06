@@ -7,45 +7,44 @@ import java.util.List;
 
 public class AestroidCollapse {
     public static int[] asteroidCollision(int[] asteroids) {
-        Deque<Integer>dq = new ArrayDeque<>();
-        List<Integer> list = new ArrayList<>();
+        Deque<Integer> dq = new ArrayDeque<>();
 
-        for(int i:asteroids){
-            if(dq.isEmpty()){
-                dq.push(i);
-            }
-            else if(!dq.isEmpty() && Math.abs(dq.peek()+i)<=Math.abs(dq.peek())){
-                while(Math.abs(dq.peek())<Math.abs(i)){
+        for (int aestroid : asteroids) {
+            boolean destroyed = false;
+
+            while (!dq.isEmpty() && dq.peek() > 0 && aestroid < 0) {
+                int top = Math.abs(dq.peek());
+                int curr = Math.abs(aestroid);
+
+                if (top < curr) {
                     dq.pop();
-                }
-                if(!dq.isEmpty()){
-                    list.add(i);
-                }
-                else{
-                    list.add(i);
-                    while(!dq.isEmpty()){
-                        dq.pop();
-                    }
+                    continue;
+                } else if (top == curr) {
+                    dq.pop();
+                    destroyed = true;
+                    break;
+                } else {
+                    destroyed = true;
+                    break;
                 }
             }
-            else{
-                dq.push(i);
+            if (!destroyed) {
+                dq.push(aestroid);
             }
         }
-        while(!dq.isEmpty()){
-            list.add(dq.pop());
+
+        int[] res = new int[dq.size()];
+        int k = 0;
+        while (!dq.isEmpty()) {
+            res[k++] = dq.removeLast();
         }
-        int n = list.size();
-        int[] res = new int[n];
-        int i=0;
-        for (Integer integer : list) {
-            res[i++] = integer;
-        }
+
         return res;
+
     }
 
     public static void main(String[] args) {
-        int[] asteroids = {3,5,-6,2,-1,4};
+        int[] asteroids = { 3, 5, -6, 2, -1, 4 };
         int[] nums = asteroidCollision(asteroids);
 
         for (int i : nums) {

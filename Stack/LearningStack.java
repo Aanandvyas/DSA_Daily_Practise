@@ -1,5 +1,7 @@
 package Stack;
 
+import java.util.ArrayDeque;
+import java.util.Deque;
 import java.util.Stack;
 
 public class LearningStack {
@@ -14,6 +16,16 @@ public class LearningStack {
         for(int i=st.size();i>0;i--){
             st2.add(st.pop());
         }
-        System.out.println(st2);
+        
+
+        Deque<Integer> dq = new ArrayDeque<>();
+        dq.push(5);
+        dq.push(21);
+        dq.push(16);
+        dq.push(9);
+        System.out.println(dq);
+
+        dq.poll();
+        System.out.println(dq.peek());
     }
 }
