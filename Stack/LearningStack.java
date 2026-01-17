@@ -23,9 +23,10 @@ public class LearningStack {
         dq.push(21);
         dq.push(16);
         dq.push(9);
+        dq.add(23);
         System.out.println(dq);
 
-        dq.poll();
+        dq.remove();
         System.out.println(dq.peek());
     }
 }
